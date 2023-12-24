@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:bmi_calculator/Config/Colors.dart';
+
+var lightTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: const ColorScheme.light(
+      background: LBgColor,
+      primary: LPrimaryColor,
+      onBackground: LFontColor,
+      primaryContainer: LDivColor,
+      onPrimaryContainer: LFontColor,
+      onSecondaryContainer: LLableColor,
+    ));
+
+var darkTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: const ColorScheme.dark(
+      background: DBgColor,
+      primary: DPrimaryColor,
+      onBackground: DFontColor,
+      primaryContainer: DDivColor,
+      onPrimaryContainer: DFontColor,
+      onSecondaryContainer: DLableColor,
+    ));
