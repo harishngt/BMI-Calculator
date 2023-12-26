@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 class ThemeController extends GetxController {
   RxBool isDark = false.obs;
 
-  void changeTheme() async {
-    isDark.value = !isDark.value;
+  void changeThemeDark() async {
+    Get.changeThemeMode(ThemeMode.dark);
+  }
 
-    Get.changeThemeMode(isDark.value ? ThemeMode.dark : ThemeMode.light);
+  void changeThemeLight() async {
+    Get.changeThemeMode(ThemeMode.light);
   }
 }
