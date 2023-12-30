@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class ThemeChangeBtn extends StatelessWidget {
   const ThemeChangeBtn({super.key});
+
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.put(ThemeController());
@@ -23,12 +24,22 @@ class ThemeChangeBtn extends StatelessWidget {
                   onPressed: () {
                     themeController.changeThemeLight();
                   },
-                  icon: const Icon(Icons.light_mode)),
+                  icon: Icon(
+                    Icons.light_mode,
+                    color: themeController.isDark.value
+                        ? Theme.of(context).colorScheme.onSecondaryContainer
+                        : Theme.of(context).colorScheme.primary,
+                  )),
               IconButton(
                   onPressed: () {
                     themeController.changeThemeDark();
                   },
-                  icon: const Icon(Icons.dark_mode))
+                  icon: Icon(
+                    Icons.dark_mode,
+                    color: themeController.isDark.value
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.onSecondaryContainer,
+                  ))
             ],
           ),
         )
