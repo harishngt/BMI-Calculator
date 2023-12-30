@@ -4,7 +4,7 @@ import 'package:bmi_calculator/Pages/HomePage.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'BMI Calculator',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
