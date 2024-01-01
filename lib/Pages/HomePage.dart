@@ -1,22 +1,26 @@
 import 'package:bmi_calculator/Components/PrimaryButton.dart';
 import 'package:bmi_calculator/Components/ThemeChangeBtn.dart';
-import 'package:bmi_calculator/Controllers/ThemeController.dart';
-import 'package:flutter/material.dart';
+import 'package:bmi_calculator/Components/HeightSelector.dart';
+import 'package:bmi_calculator/Components/WeightSelector.dart';
+import 'package:bmi_calculator/Components/AgeSelector.dart';
+import 'package:bmi_calculator/Controllers/BMIController.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    BMIController bmiController = Get.put(BMIController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              ThemeChangeBtn(),
-              SizedBox(height: 20),
+              const ThemeChangeBtn(),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Text("Welcome ☺️",
@@ -36,14 +40,53 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 30),
               Row(
                 children: [
-                  PrimaryButton(icon: Icons.male, btnName: "Male"),
+                  PrimaryButton(
+                    onPress: () {
+                      bmiController.genderHandle("Male");
+                    },
+                    icon: Icons.male,
+                    btnName: "Male",
+                  ),
                   SizedBox(width: 20),
-                  PrimaryButton(icon: Icons.female, btnName: "Female")
+                  PrimaryButton(
+                      onPress: () {
+                        bmiController.genderHandle("Female");
+                      },
+                      icon: Icons.female,
+                      btnName: "Female")
                 ],
-              )
+              ),
+              const SizedBox(height: 30),
+              const Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HeightSelector(),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          WeightSelector(),
+                          AgeSelector(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 50,
+                child: PrimaryButton(
+                    onPress: () {},
+                    icon: Icons.navigate_next_rounded,
+                    btnName: "Lets Go"),
+              ),
+              SizedBox(height: 20),
             ],
           ),
         ),
