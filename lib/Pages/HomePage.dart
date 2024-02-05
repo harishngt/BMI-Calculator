@@ -1,9 +1,11 @@
 import 'package:bmi_calculator/Components/PrimaryButton.dart';
+import 'package:bmi_calculator/Components/RactButton.dart';
 import 'package:bmi_calculator/Components/ThemeChangeBtn.dart';
 import 'package:bmi_calculator/Components/HeightSelector.dart';
 import 'package:bmi_calculator/Components/WeightSelector.dart';
 import 'package:bmi_calculator/Components/AgeSelector.dart';
 import 'package:bmi_calculator/Controllers/BMIController.dart';
+import 'package:bmi_calculator/Pages/ResultPage.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -79,13 +81,12 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(
-                height: 50,
-                child: PrimaryButton(
-                    onPress: () {},
-                    icon: Icons.navigate_next_rounded,
-                    btnName: "Lets Go"),
-              ),
+              MyRactButton(
+                  onPress: () {
+                    Get.to(ResultPage());
+                  },
+                  btnName: "Lets Go",
+                  icon: Icons.done_all_rounded),
               SizedBox(height: 20),
             ],
           ),
